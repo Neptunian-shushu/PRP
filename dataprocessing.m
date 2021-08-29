@@ -1,5 +1,7 @@
 clc;clear;
-filename='SH600000-1.csv';
+name_title='SH600000-1';
+tail='.csv';
+filename=[name_title,tail];
 fid=fopen(filename);
 row = 0;
 unit = 1;%control the step of time
@@ -37,7 +39,6 @@ while 1
             time(j+1,1)=time_cut{1,1}+":"+num2str(temp_time+unit)+":"+time_cut{1,3};
             a=[a(1:j,:);a(j,:);a(j+1:end,:)];
             temp_time=temp_time+unit;
-            %j=j-1;
         end
     end
     sz=size(time);
@@ -46,9 +47,27 @@ while 1
     end
     j=j+1;i=i+1;
 end
+row=sz(1);
 for i=1:sz(1)%sum the volume
     if i==1
     else
         a(i,2)=a(i-1,2)+a(i,2);
     end
 end
+%choose only one
+a(:,5)=[];%delete SP2
+a(:,5)=[];%delete SP3
+a(:,6)=[];%delete SV2
+a(:,6)=[];%delete SV3
+a(:,7)=[];%delete BP2
+a(:,7)=[];%delete BP3
+a(:,8)=[];%delete BV2
+a(:,8)=[];%delete BV3
+for i=1:row
+    time_cut=strsplit(time(i,1),':');
+    time(i)=time_cut{1,1}+":"+time_cut{1,2};
+end
+title={'Time','Price','Volume','Amount','SP1','SV1','BP1','BV1','isBuy'};
+%csvwrite([name_title,'-processed',tail],title);
+result_table=table(time,a(:,1),a(:,2),a(:,3),a(:,4),a(:,5),a(:,6),a(:,7),a(:,8),'VariableNames',title);
+writetable(result_table,[name_title,'-processed',tail]);

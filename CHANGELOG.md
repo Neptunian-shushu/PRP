@@ -15,3 +15,11 @@ shu-shu:
 2. dataprocess.m 可以将缺失的分钟的数据按上一个数据补齐
 3. dataprocess.m volume累加
 4. SH600000.csv 更换为浦发银行数据
+
+### 2021/8/29
+
+shu-shu:
+
+1. dataprocess.m 删除多余数据项，如SP2、SV2等
+2. dataprocess.m 去除秒时间
+3. dataprocess.m 可以输出csv文件，输出文件名为‘原文件名-processed.csv’
