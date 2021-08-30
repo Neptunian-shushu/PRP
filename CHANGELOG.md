@@ -23,3 +23,10 @@ shu-shu:
 1. dataprocess.m 删除多余数据项，如SP2、SV2等
 2. dataprocess.m 去除秒时间
 3. dataprocess.m 可以输出csv文件，输出文件名为‘原文件名-processed.csv’
+
+### 2021/8/30
+
+shu-shu:
+
+1. dataprocess.m 可以改变时间间隔进行筛选，以分钟为单位
+2. dataprocess.m 还需要确定选取的每个间隔的时间算在哪一个时间点上
