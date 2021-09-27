@@ -1,7 +1,9 @@
-function out=dataprocessing(name_title,unit)
+function out=dataprocessing(input_folder,output_folder,name,unit)
+%cd (input_folder);
+name_title=extractBefore(name,".csv");
 tail='.csv';
 filename=[name_title,tail];
-fid=fopen(filename);
+fid=fopen([input_folder,'\',filename]);
 row = 0;
 %unit = 1;%control the step of time
 while ~feof(fid)
@@ -9,7 +11,7 @@ while ~feof(fid)
     fgetl(fid);
 end
 fclose(fid);
-fid=fopen(filename);
+fid=fopen([input_folder,'\',filename]);
 array=textscan(fid,'%s %s %*[^\n]');
 time_origin=array{1,2};%get the origin time of minutes, but it needs further processing
 for i=2:(row)
@@ -18,7 +20,7 @@ for i=2:(row)
 end
 fclose(fid);
 time=string((time));
-a=csvread(filename,1,1);%read the numerical data from the csv file
+a=csvread([input_folder,'\',filename],1,1);%read the numerical data from the csv file
 size_a=size(a);
 col=size_a(2);
 j=0;%to change data
@@ -111,5 +113,6 @@ end
 a(:,3)=[];
 title={'Time','Price','Volume','SP1','SV1','BP1','BV1','isBuy'};
 result_table=table(time,a(:,1),a(:,2),a(:,3),a(:,4),a(:,5),a(:,6),a(:,7),'VariableNames',title);
-writetable(result_table,[name_title,'-processed',tail]);
+%cd (output_folder)
+writetable(result_table,[char(output_folder),'\',name_title,'-processed',tail]);
 end

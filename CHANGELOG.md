@@ -43,3 +43,10 @@ shu-shu:
 2. main.m 在脚本中遍历所有需要处理的文件夹并调用dataprocessing函数进行数据处理
 3. 所有数据处理基于2020年数据
 4. dataprocessing.m volume按unit累加
+
+### 2021/9/28
+
+shu-shu:
+
+1. dataprocessing.m 实现从任意文件夹读取，输出到任意文件夹
+2. main.m 从当前2020部分高频数据中，已可以实现自动解压，遍历处理，并输出数据到制定文件夹，基本完成

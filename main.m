@@ -52,10 +52,42 @@ for i=1:length(year_dir_list)%遍历所有年份文件夹
     for i=1:length(no_unzipped)
         path_temp_no_unzip=path_temp_data+"\"+no_unzipped(i);%address of the file that needs to be unzipped
         unzip(char(path_temp_no_unzip),char(path_temp_data+"\"+unzipped(i)));
-        
     end
-            
-    %遍历sh文件夹
+    %cd into the unzipped folder twice
+    for i=1:length(unzipped)
+        path_temp_unzipped_=path_temp_data+"\"+unzipped(i);
+        path_single=dir(path_temp_unzipped_);
+        path_temp_unzipped=path_temp_unzipped_+"\"+string(path_single(3).name);
+        path_temp_unzipped_processed=path_temp_processed+"\"+string(path_single(3).name);
+        if exist(path_temp_unzipped_processed)==0
+            mkdir(path_temp_unzipped_processed);
+        end
+        %SH
+        path_temp_unzipped_SH=path_temp_unzipped+"\SH";
+        path_temp_unzipped_SH_processed=path_temp_unzipped_processed+"\SH";
+        if exist(path_temp_unzipped_SH_processed)==0
+            mkdir(path_temp_unzipped_SH_processed);
+        end
+        SH_dir=dir(path_temp_unzipped_SH);
+        %process the data
+        for i=3:length(SH_dir)
+            dataprocessing(SH_dir(i).folder,path_temp_unzipped_SH_processed,SH_dir(i).name,1);
+        end
+        %SZ
+        path_temp_unzipped_SZ=path_temp_unzipped+"\SZ";
+        path_temp_unzipped_SZ_processed=path_temp_unzipped_processed+"\SZ";
+        if exist(path_temp_unzipped_SZ_processed)==0
+            mkdir(path_temp_unzipped_SZ_processed);
+        end
+        SZ_dir=dir(path_temp_unzipped_SZ);
+        %process the data
+        for i=3:length(SZ_dir)
+            dataprocessing(SZ_dir(i).folder,path_temp_unzipped_SZ_processed,SZ_dir(i).name,1);
+        end
+        %delete the unzipped folders
+        rmdir(path_temp_unzipped_,'s');
+    end
+    
 end
 
 %for year=1:length(year_dir_list)
