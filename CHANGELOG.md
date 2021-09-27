@@ -30,3 +30,16 @@ shu-shu:
 
 1. dataprocess.m 可以改变时间间隔进行筛选，以分钟为单位
 2. dataprocess.m 还需要确定选取的每个间隔的时间算在哪一个时间点上
+
+### 2021/9/27
+
+shu-shu:
+
+由于本人一些离谱的撤销操作导致整个9月份的进展全部丢失。。
+
+现在重新编辑
+
+1. dataprocessing.m 用于调用进行处理数据，可以自行判断表格列数进行分别处理
+2. main.m 在脚本中遍历所有需要处理的文件夹并调用dataprocessing函数进行数据处理
+3. 所有数据处理基于2020年数据
+4. dataprocessing.m volume按unit累加

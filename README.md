@@ -3,10 +3,7 @@ Materials for PRP in 2021 Autumn PRP program
 
 _________
 
-dataprocess.m: matlab文件用来处理csv数据
+dataprocessing.m: matlab文件用来处理csv数据，可以处理16列的以及24列的数据
 
-更换为SH600000.csv: csv数据样例，用于测试dataprocess.m
+main.m：在主程序中调用dataprocessing函数进行数据处理，同时遍历所有文件夹，在原目录下生成处理后文件夹，并在其中以相同文件夹结构生成处理后数据。
 
-SH600000-1.csv 数据样例片段
-
-SH600000-processed.csv 处理后数据
