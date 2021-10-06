@@ -82,7 +82,7 @@ for i=1:length(year_dir_list)%遍历所有年份文件夹
         SZ_dir=dir(path_temp_unzipped_SZ);
         %process the data
         for i=3:length(SZ_dir)
-            dataprocessing(SZ_dir(i).folder,path_temp_unzipped_SZ_processed,SZ_dir(i).name,1);
+            dataprocessing_1min(SZ_dir(i).folder,path_temp_unzipped_SZ_processed,SZ_dir(i).name,1);
         end
         %delete the unzipped folders
         rmdir(path_temp_unzipped_,'s');
@@ -94,4 +94,4 @@ end
 %    path_temp=path_data+"\"+year_dir_list(1);
 %    list1=dir(path_temp);
 %end
-%dataprocessing('SZ000002',1);
+%dataprocessing_1min('SZ000002',1);

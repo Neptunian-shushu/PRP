@@ -1,4 +1,4 @@
-function out=dataprocessing(input_folder,output_folder,name,unit)
+function out=dataprocessing_1min(input_folder,output_folder,name,unit)
 %cd (input_folder);
 name_title=extractBefore(name,".csv");
 tail='.csv';
