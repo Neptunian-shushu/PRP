@@ -1,16 +1,6 @@
 # PRP
 Materials for PRP in 2021 Autumn PRP program
 
-_________
-
-dataprocessing_1min.m: matlab文件用来按分钟处理csv数据，可以处理16列的以及24列的数据
-
-dataprocessing_30sec.m: matlab文件用来按30秒处理csv数据
-
-main.m：在主程序中调用dataprocessing函数进行数据处理，同时遍历所有文件夹，在原目录下生成处理后文件夹，并在其中以相同文件夹结构生成处理后数据。
-
-
-
 ____
 
 Problems remain:
@@ -22,8 +12,29 @@ Problems remain:
 
 ____
 
+### HPC平台使用
+
+#### 在线远程桌面
+
+登陆网址：https://studio.hpc.sjtu.edu.cn/
+
+主用户名：aemhwx
+
+密码：PBm5A!VD
+
+子用户：shu-shu
+
+密码：shubohan020904
+
+
+
+____
+
 ### 10/6 重新更新
 
 shu-shu original code: 原来可用于处理1分钟的代码以及可处理30s数据但未完成的代码
 
 zly code: 已按想要的数据格式进行封装，接下来需要处理的问题见changelog
+
+test：测试cd和直接读取路径哪种方式速度更快：直接读取路径更快，但是快的不多
+

@@ -41,7 +41,7 @@ for i=3:length(DIRECTORY1)
     DIRSH=dir([datapath,'\SH']);
 %     FILE=[datapath,'\SH\',DIRSH(3).name];
 %     stockclean(FILE,newpath,DAY);
-    parfor j=3:length(DIRSH)
+    for j=3:length(DIRSH)
         FILE=[datapath,'\SH\',DIRSH(j).name];
         try
             stockclean(FILE,newpath,DAY);
