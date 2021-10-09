@@ -1,6 +1,6 @@
 clc;clear;
-STARTYEAR=2020;
-ENDYEAR=2020;
+STARTYEAR=2007;
+ENDYEAR=2007;
 path_origin=pwd;
 %enter the original data
 path_year=[path_origin, '\解压后数据'];

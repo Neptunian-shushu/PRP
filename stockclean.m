@@ -1,6 +1,14 @@
 function stockclean(FILENAME,NEWFOLDER,DAY)
 rawdata=readtable(FILENAME);
-rawdata= removevars(rawdata,{'Amount','SP2','SP3','SP4','SP5','SV2','SV3','SV4','SV5','BP2','BP3','BP4','BP5','BV2','BV3','BV4','BV5'});
+rawdata_size=size(rawdata);
+if rawdata_size(2)==17
+    rawdata= removevars(rawdata,{'Amount','SP2','SP3','SV2','SV3','BP2','BP3','BV2','BV3'});
+elseif rawdata_size(2)==25
+    rawdata= removevars(rawdata,{'Amount','SP2','SP3','SP4','SP5','SV2','SV3','SV4','SV5','BP2','BP3','BP4','BP5','BV2','BV3','BV4','BV5'});
+else
+    msg = 'Size Error Occurred.';
+    error(msg)
+end
 data=table2cell(rawdata);
 
 duration=30; % unit:second
