@@ -4,8 +4,8 @@ rawdata= removevars(rawdata,{'Amount','SP2','SP3','SP4','SP5','SV2','SV3','SV4',
 data=table2cell(rawdata);
 
 duration=30; % unit:second
-t_morning=datetime(2020,01,02,09,30,00)+seconds(0:duration:7199);
-t_afternoon=datetime(2020,01,02,13,00,00)+seconds(0:duration:7199);
+t_morning=datetime(str2num(DAY(1:4)),str2num(DAY(5:6)),str2num(DAY(7:8)),09,30,00)+seconds(0:duration:7199);
+t_afternoon=datetime(str2num(DAY(1:4)),str2num(DAY(5:6)),str2num(DAY(7:8)),13,00,00)+seconds(0:duration:7199);
 halfdaylength=length(t_morning);
 daylength=length(t_morning)+length(t_afternoon);
 

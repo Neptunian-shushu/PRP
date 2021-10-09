@@ -71,3 +71,4 @@ shu-shu:
 
 1. 新增extract_file.py，用来解压所有原始文件并处理成可以用matlab代码可以直接处理的标准格式
 2. clean_year.m可以自行判断进入当天数据的文件夹后是否达到SH、SZ文件夹的位置
+

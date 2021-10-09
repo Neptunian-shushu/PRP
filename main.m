@@ -1,6 +1,6 @@
 clc;clear;
-STARTYEAR=2021;
-ENDYEAR=2021;
+STARTYEAR=2020;
+ENDYEAR=2020;
 path_origin=pwd;
 %enter the original data
 path_year=[path_origin, '\解压后数据'];
@@ -20,7 +20,7 @@ end
 cd (path_origin);
 ORIGIN='高频处理数据';
 
-parfor i=STARTYEAR:ENDYEAR
+for i=STARTYEAR:ENDYEAR
     YEAR=num2str(i);
     FOLDERNAME=[ORIGIN,YEAR];
     transformyear(path_processed,FOLDERNAME);
