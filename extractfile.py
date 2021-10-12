@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import re
 import shutil
@@ -19,7 +20,21 @@ def extend_agg_method(agg_method_dict, all_columns=[]):
 
 
 def extract_from_rar(path, outpath):
-    patoolib.extract_archive(path, outdir=outpath)
+    path_split=path.split("\\")
+    filename=path_split[-1]
+    filename_split=filename.split(".")
+    #get the filename wanted to determine whether this file has been extracted or not
+    target_file=filename_split[0]
+    #temp_path refers to the path of the extracted file
+    temp_path=outpath+"\\"+target_file
+    #print(os.listdir(outpath))
+    
+    
+    if os.path.exists(temp_path):
+        print("%s already exists, skip."%temp_path)
+    else:
+        print("%s doesn't exist, extract."%temp_path)
+        patoolib.extract_archive(path, outdir=outpath)
 
 
 def extract_certain_files(path, outpath):
@@ -29,13 +44,9 @@ def extract_certain_files(path, outpath):
             rar.extract(file, path=outpath)
 
 
-def delete_dir(path):
-    shutil.rmtree(path, ignore_errors=True)
 
 
-def handle_one_day_data_rar(path=None, save_path=None, temp_dir=None,
-                            
-                            ):
+def handle_one_day_data_rar(path=None, save_path=None, temp_dir=None,):
     # 临时文件目录， 用于储存解压后的文件
     # 再合成完日级数据后自动删除
     # temp_dir = os.path.join(save_path, '_temp')
@@ -82,13 +93,6 @@ def handle_one_year_daily_data(parent_dir=None, save_path=None,
 def handle_year_dir(parent_dir=None, save_path=None,
                     temp_dir=None, dir_name=None,
                     **kwargs):
-    # 先清空临时文件夹 
-    while True:
-        try:
-            delete_dir(temp_dir)
-            break
-        except:
-            pass
 
     handle_one_year_daily_data(
         parent_dir=parent_dir,
@@ -111,7 +115,7 @@ agg_method = {
 }
 label = 'left'  # 聚合后以左端点为区间标签
 parent_dir = os.getcwd()+'\\GPSJ原始数据'  # 原始数据目录
-save_path = os.getcwd()+'\\整理后数据'  # 处理后的数据保存地址
+save_path = os.getcwd()+'\\extracted'  # 处理后的数据保存地址
 
 year_dir_list = [
     # '非股票的高频数据2017年1月-10月',
@@ -130,11 +134,11 @@ year_dir_list = [
     #    '高频原始数据2018',
     #    '高频原始数据2019',
         '高频原始数据2020',
-        '高频原始数据2021'
+    #    '高频原始数据2021'
 ]
 
 for year_dir in year_dir_list:
-    temp_dir= os.getcwd()+'\\解压后数据\\高频原始数据'+year_dir[-4:]
+    temp_dir= os.getcwd()+'\\extracted\\'+year_dir[-4:]
     handle_year_dir(
         parent_dir=parent_dir,
         save_path=save_path,

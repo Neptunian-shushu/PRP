@@ -45,3 +45,10 @@ test：测试cd和直接读取路径哪种方式速度更快：直接读取路�
 extractfile.py: 可以解压一定格式年份的数据（目测除了2006应该都行）
 
 main.m：大体上已经可以配合进行extractfile.py进行处理
+
+
+
+```
+cat hhh.txt | xargs --max-args=1 --max-procs=5 --replace=% rsync --archive --partial E:/hhh.txt% aemhwx@data.hpc.sjtu.edu.cn:/lustre/home/acct-aemhwx/aemhwx/Desktop/
+```
+

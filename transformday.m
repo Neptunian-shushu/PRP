@@ -40,7 +40,7 @@ for i=4:length(DIRECTORY)
 end
 
 ADDRESS=[NEWFOLDERNAME,'\',FILENAME(end-7:end)];
-cd('处理后数据');
+cd('processed');
 save(ADDRESS,'data','FIRM')
 
 end

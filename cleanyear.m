@@ -2,7 +2,7 @@
 function cleanyear(target_path,path_output,YEAR)
 cd (path_output);
 %originpath=pwd;
-NEWFOLDER=['高频处理数据',YEAR];
+NEWFOLDER="高频处理数据"+YEAR;
 if ~exist(NEWFOLDER,'dir')
 	mkdir(NEWFOLDER);
 end
@@ -10,7 +10,7 @@ cd(NEWFOLDER);
 newpath=pwd;
 
 cd(target_path);
-FOLDER=['高频原始数据',YEAR];
+FOLDER=YEAR;
 DIRECTORY1=dir(FOLDER);
 
 for i=3:length(DIRECTORY1)
@@ -25,7 +25,7 @@ for i=3:length(DIRECTORY1)
         mkdir(DAY);
     end
     
-    temp_path=[target_path,'\',FILENAME(1:10),'\','ws',YEAR,FILENAME(end-5:end)];
+    temp_path=[target_path,'\',FILENAME(1:4),'\','ws',YEAR,FILENAME(end-5:end)];
     if exist(temp_path)~=0%exist
         datapath=temp_path;
     else
